@@ -5,7 +5,7 @@
     
     <div class="max-w-7xl mx-auto mb-6 bg-blue-600/10 border border-blue-500/20 rounded-2xl p-4 flex flex-wrap justify-between items-center gap-4 shadow-2xl">
         <div class="flex items-center gap-4">
-            <div class="bg-blue-600 p-2 rounded-lg text-white">
+            <div class="bg-blue-600 p-2 rounded-lg text-white shadow-[0_0_15px_rgba(37,99,235,0.5)]">
                 <i class="fas fa-bolt animate-pulse"></i>
             </div>
             <div>
@@ -38,7 +38,7 @@
             </div>
             <div class="bg-slate-900 p-6 rounded-3xl border border-slate-800 text-left">
                 <p class="text-[9px] text-slate-500 uppercase font-bold mb-1 italic">Market Outlook</p>
-                <h2 class="text-2xl font-black text-red-500 italic uppercase" id="market-date">Q4 2026</h2>
+                <h2 class="text-2xl font-black text-red-500 italic uppercase">Q4 2026</h2>
             </div>
         </div>
     </header>
@@ -78,32 +78,32 @@
                 <h4 class="text-[10px] font-bold text-blue-400 uppercase italic mb-4">Phase Volatility (Last 7 Days)</h4>
                 
                 <div class="flex items-end justify-between gap-2 h-32 px-1 border-b border-slate-800 pb-2">
-                    <div class="flex flex-col items-center flex-1">
-                        <div class="bg-slate-800 w-full h-[85%] rounded-t-md"></div>
+                    <div class="flex flex-col items-center flex-1 h-full justify-end">
+                        <div class="bg-slate-800 w-full rounded-t-md" style="height: 85%;"></div>
                         <span class="text-[6px] text-slate-600 mt-2">FEB 26</span>
                     </div>
-                    <div class="flex flex-col items-center flex-1">
-                        <div class="bg-slate-800 w-full h-[75%] rounded-t-md"></div>
+                    <div class="flex flex-col items-center flex-1 h-full justify-end">
+                        <div class="bg-slate-800 w-full rounded-t-md" style="height: 70%;"></div>
                         <span class="text-[6px] text-slate-600 mt-2">FEB 27</span>
                     </div>
-                    <div class="flex flex-col items-center flex-1">
-                        <div class="bg-slate-800 w-full h-[65%] rounded-t-md"></div>
+                    <div class="flex flex-col items-center flex-1 h-full justify-end">
+                        <div class="bg-slate-800 w-full rounded-t-md" style="height: 55%;"></div>
                         <span class="text-[6px] text-slate-600 mt-2">FEB 28</span>
                     </div>
-                    <div class="flex flex-col items-center flex-1">
-                        <div class="bg-slate-700 w-full h-[50%] rounded-t-md"></div>
+                    <div class="flex flex-col items-center flex-1 h-full justify-end">
+                        <div class="bg-slate-700 w-full rounded-t-md" style="height: 40%;"></div>
                         <span class="text-[6px] text-slate-600 mt-2">MAR 01</span>
                     </div>
-                    <div class="flex flex-col items-center flex-1">
-                        <div class="bg-red-900/40 w-full h-[40%] rounded-t-md"></div>
+                    <div class="flex flex-col items-center flex-1 h-full justify-end">
+                        <div class="bg-red-900/40 w-full rounded-t-md border-t border-red-500/30" style="height: 25%;"></div>
                         <span class="text-[6px] text-slate-600 mt-2">MAR 02</span>
                     </div>
-                    <div class="flex flex-col items-center flex-1">
-                        <div class="bg-red-900/60 w-full h-[30%] rounded-t-md"></div>
+                    <div class="flex flex-col items-center flex-1 h-full justify-end">
+                        <div class="bg-red-900/60 w-full rounded-t-md border-t border-red-500/50" style="height: 18%;"></div>
                         <span class="text-[6px] text-slate-600 mt-2">MAR 03</span>
                     </div>
-                    <div class="flex flex-col items-center flex-1">
-                        <div id="trend-bar-live" class="bg-blue-600 w-full h-[15%] rounded-t-md animate-pulse shadow-[0_0_15px_rgba(37,99,235,0.4)]"></div>
+                    <div class="flex flex-col items-center flex-1 h-full justify-end">
+                        <div id="trend-bar-live" class="bg-blue-600 w-full rounded-t-md animate-pulse shadow-[0_0_15px_rgba(37,99,235,0.4)]" style="height: 10%;"></div>
                         <span class="text-[6px] text-blue-500 font-bold mt-2">TODAY</span>
                     </div>
                 </div>
@@ -137,15 +137,4 @@ function updateSystem() {
     const market = 62;
     const score = (ceasefire * 0.3) + (market * 0.2) - (iranRisk * 0.5) + 40;
     
-    document.getElementById('verdict-score').innerText = Math.round(score) + '%';
-    
-    // Live Bar Logic (Minimum 10% for visibility)
-    const trendBar = document.getElementById('trend-bar-live');
-    if (trendBar) {
-        trendBar.style.height = Math.max(10, score) + '%';
-    }
-}
-
-setInterval(updateSystem, 1000);
-updateSystem();
-</script>
+    document.getElementById('ver
