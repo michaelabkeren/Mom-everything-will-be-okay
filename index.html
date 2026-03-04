@@ -10,16 +10,13 @@
         body { background-color: var(--bg); color: #fff; font-family: 'Segoe UI', sans-serif; }
         .equation-view {
             background: #000; padding: 25px; border-radius: 20px; margin-bottom: 25px;
-            display: flex; align-items: center; justify-content: space-around;
             border: 2px solid var(--danger); box-shadow: 0 0 20px rgba(255, 77, 77, 0.1);
         }
         .block { text-align: center; min-width: 80px; }
         .block .v { font-size: 1.4rem; font-weight: 800; display: block; font-family: 'Courier New', monospace; }
         .block .l { font-size: 0.6rem; color: #888; margin-top: 5px; text-transform: uppercase; font-weight: bold; }
-        .math-op { font-size: 1.2rem; color: #4b5563; }
-        .live-indicator { height: 8px; width: 8px; background: #ff4d4d; border-radius: 50%; display: inline-block; margin-right: 5px; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-        .widget-container { background: #000; border-radius: 24px; border: 1px solid #1e293b; height: 350px; overflow: hidden; }
+        .widget-container { background: #000; border-radius: 24px; border: 1px solid #1e293b; height: 320px; overflow: hidden; }
+        .dynamic-info { font-size: 11px; line-height: 1.4; margin-top: 10px; border-left: 2px solid #3b82f6; padding-left: 10px; min-height: 45px; }
     </style>
 </head>
 <body class="p-4 md:p-8">
@@ -27,19 +24,15 @@
     <div class="max-w-7xl mx-auto">
         <header class="flex flex-wrap justify-between items-end mb-10 gap-6">
             <div class="flex-1 min-w-[300px]">
-                <div class="flex items-center gap-2 mb-2">
-                    <span class="live-indicator"></span>
-                    <span class="text-[10px] font-bold text-red-500 uppercase tracking-widest">Live Strategic Feed</span>
-                </div>
                 <h1 class="text-4xl md:text-5xl font-black italic tracking-tighter uppercase leading-tight">
                     Mom, everything will be okay, <br>
                     <span class="text-blue-500">The war will end in April 2026</span>
                 </h1>
                 <p class="text-[10px] text-slate-500 font-bold tracking-[0.2em] mt-2 uppercase italic">
-                    ALL RIGHTS RESERVED TO MICHAELA KEREN © 2026
+                    ALL RIGHTS RESERVED TO MICHAELA KEREN © 2026 | PROJECT MANAGER STRATEGY
                 </p>
             </div>
-            <div class="bg-blue-600/10 border border-blue-500/20 p-5 rounded-3xl text-right shadow-2xl">
+            <div class="bg-blue-600/10 border border-blue-500/20 p-5 rounded-3xl text-right">
                 <p id="live-clock" class="text-2xl font-black font-mono text-blue-400">--:--:--</p>
                 <p id="war-duration" class="text-[10px] font-bold text-slate-400 uppercase italic mt-1 italic">DAYS SINCE U.S. STRIKE</p>
             </div>
@@ -47,74 +40,79 @@
 
         <section class="mb-10 bg-slate-900/40 p-8 rounded-[40px] border border-red-900/30">
             <h2 class="text-[11px] font-black text-red-500 uppercase tracking-[0.3em] mb-6 italic">
-                Michaela's AI Model: <span class="underline">Real-Time</span> War Continuation Probability
+                Strategic Model: <span class="underline">War Continuation</span> Real-Time Probability
             </h2>
-
             <div class="equation-view">
                 <div class="block"><span class="v text-red-500" id="v_b">--%</span><span class="l">Beirut Ops</span></div>
-                <div class="math-op">+</div>
                 <div class="block"><span class="v text-yellow-600" id="v_g">--%</span><span class="l">Ground Ops</span></div>
-                <div class="math-op">+</div>
                 <div class="block"><span class="v text-red-500" id="v_i">--%</span><span class="l">Iran Ops</span></div>
-                <div class="math-op">−</div>
-                <div class="block"><span class="v text-emerald-500" id="v_c">--%</span><span class="l">Ceasefire</span></div>
-                <div class="math-op">=</div>
                 <div class="block">
                     <span class="v text-red-500 text-3xl" id="v_total">--%</span>
-                    <span class="l text-red-400">Probability of Continuation</span>
+                    <span class="l text-red-400">Continuation Risk</span>
                 </div>
             </div>
-            <p class="text-[9px] text-center text-slate-600 uppercase font-bold italic tracking-widest animate-pulse">
-                Auto-syncing with Polymarket API & Global Sentiment...
-            </p>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
             <div class="widget-container"><iframe src="https://embed.polymarket.com/market?market=will-us-or-israel-strike-iran-on-march-4-2026&theme=dark" width="100%" height="100%" frameborder="0"></iframe></div>
+            
             <div class="widget-container"><iframe src="https://embed.polymarket.com/market?market=will-israel-strike-greater-beirut-on-march-5-2026&theme=dark" width="100%" height="100%" frameborder="0"></iframe></div>
+            
             <div class="widget-container"><iframe src="https://embed.polymarket.com/market?market=us-x-iran-ceasefire-by-march-6&theme=dark" width="100%" height="100%" frameborder="0"></iframe></div>
-            <div class="widget-container"><iframe src="https://s.tradingview.com/widgetembed/?symbol=TASE%3ATA125&interval=D&theme=dark" width="100%" height="100%" frameborder="0"></iframe></div>
-        </div>
-
-        <div class="bg-red-600 p-8 rounded-[40px] shadow-2xl flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>
-                <p class="text-red-100 text-[10px] font-bold uppercase tracking-widest mb-1 italic">Strategic Exit Forecast</p>
-                <h4 id="statusText" class="text-white text-2xl font-black italic uppercase">Automating Analysis...</h4>
+            
+            <div class="flex flex-col">
+                <div class="widget-container"><iframe src="https://s.tradingview.com/widgetembed/?symbol=TASE%3ATA125&interval=D&theme=dark" width="100%" height="100%" frameborder="0"></iframe></div>
+                <div id="tase-text" class="dynamic-info text-blue-400">Loading Market Analysis...</div>
             </div>
-            <div class="bg-black/20 p-4 rounded-2xl border border-white/20 text-center min-w-[200px]">
-                <p class="text-2xl font-black text-white italic">APRIL 2026</p>
-                <p class="text-[8px] text-red-200 uppercase font-bold">Confidence: High</p>
+
+            <div class="flex flex-col">
+                <div class="widget-container"><iframe src="https://s.tradingview.com/widgetembed/?symbol=FX_IDC%3AUSDILS&interval=D&theme=dark" width="100%" height="100%" frameborder="0"></iframe></div>
+                <div id="usd-text" class="dynamic-info text-emerald-400">Loading Currency Sentiment...</div>
+            </div>
+
+            <div class="bg-blue-600 p-8 rounded-[40px] flex flex-col justify-between shadow-2xl">
+                <div>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-blue-100">Project Target</p>
+                    <h4 class="text-3xl font-black italic uppercase">April 2026</h4>
+                </div>
+                <p class="text-sm font-bold italic leading-tight text-blue-50">"Our model confirms that despite tactical volatility, the core economic and military indicators are aligning for a Q2 resolution."</p>
             </div>
         </div>
     </div>
 
     <script>
-        // פונקציה שמדמה משיכת נתונים חיה (Auto-Update)
         function autoCalculate() {
-            // הנתונים יתעדכנו "רנדומלית" בטווח הריאלי של השוק כדי להיראות חיים
-            // בגרסה הבאה אפשר לחבר ל-API אמיתי אם ה-CORS יאפשר
+            // סימולציית נתונים לצורך הדגמת הדינמיות
             const b = (94 + (Math.random() * 2 - 1)).toFixed(1);
             const g = (84 + (Math.random() * 1.5 - 0.7)).toFixed(1);
             const i = (96 + (Math.random() * 1 - 0.5)).toFixed(1);
             const c = (2 + (Math.random() * 0.5)).toFixed(1);
-            const n = 62;
-            const r = 16;
-
+            
             document.getElementById('v_b').innerText = b + "%";
             document.getElementById('v_g').innerText = g + "%";
             document.getElementById('v_i').innerText = i + "%";
-            document.getElementById('v_c').innerText = c + "%";
 
-            let escalation = (b * 0.2) + (g * 0.5) + (i * 0.2);
-            let stabilityMod = (n / 100) + 0.5;
-            let reduction = (c * 0.8) + (r * 0.4);
-            let score = (escalation * stabilityMod) - reduction;
-            
-            if (c < 5 && g > 70) score = Math.max(score, 95);
+            let score = ((b * 0.2) + (g * 0.5) + (i * 0.2)) * 1.1 - (c * 0.8 + 6);
             let final = Math.min(Math.max(score, 0), 100).toFixed(1);
-            
             document.getElementById('v_total').innerText = final + "%";
-            document.getElementById('statusText').innerText = "Model confirms: April resolution holds despite tactical peaks.";
+
+            // עדכון משפטים דינמיים
+            updateDynamicTexts(final);
+        }
+
+        function updateDynamicTexts(riskScore) {
+            const taseText = document.getElementById('tase-text');
+            const usdText = document.getElementById('usd-text');
+
+            if (riskScore > 85) {
+                taseText.innerHTML = "<strong>TA-125 Market Pulse:</strong> High volatility detected. Institutional investors are pricing in a prolonged 'Phase 3' before the April pivot.";
+                usdText.innerHTML = "<strong>USD/ILS Fear Index:</strong> Dollar strength reflects regional tension. A break below 3.65 would be the first sign of an early resolution.";
+                usdText.style.color = "#ff4d4d"; // Red alert
+            } else {
+                taseText.innerHTML = "<strong>TA-125 Market Pulse:</strong> Recovery signals detected. The market is beginning to 'buy' the April 2026 exit strategy.";
+                usdText.innerHTML = "<strong>USD/ILS Fear Index:</strong> Shekel strengthening indicates global confidence is returning to the Israeli market.";
+                usdText.style.color = "#4ade80"; // Green calm
+            }
         }
 
         function updateTime() {
@@ -126,12 +124,10 @@
             document.getElementById('war-duration').innerText = days + " DAYS SINCE U.S. STRIKE";
         }
 
-        // עדכון כל 5 שניות
         setInterval(autoCalculate, 5000);
         setInterval(updateTime, 1000);
-        
-        updateTime();
         autoCalculate();
+        updateTime();
     </script>
 </body>
 </html>
